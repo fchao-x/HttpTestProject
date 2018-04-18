@@ -5,7 +5,26 @@
 
 {% block test_items_context %}
 <script>
-	function pathTest()
+	//获取长度为len的随机字母
+	function randomLengthString(len){
+		len = len || 1;
+
+		var $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0987654321';
+		var maxPos = $chars.length;
+
+		r_str = ''
+
+		if (len < 0){
+
+		} else {
+			for (i = 0; i < len; i++) {
+			r_str += $chars.charAt(Math.floor(Math.random() * maxPos));
+		};
+
+		return r_str;
+	};
+
+	function pathLengthTest(number)
 	{
 		var xmlhttp;
 		if (window.XMLHttpRequest)
@@ -27,11 +46,12 @@
 		}
 		xmlhttp.open("POST","postTest",true);
 		xmlhttp.send();
-	}
+	};
 </script>
 
-<form id = "asterisk">
-	Path: <button type="button" onclick="URLAsterisk()">发送请求</button>
+<form id = "path_length">
+	Path_length: <input type="number"><p class = "info">Range:1, 12-8100</p><br>
+	<input type="submit" value="发送请求">
 </form>
 
 {% endblock %}
