@@ -17,6 +17,16 @@ def getAllHeaders(request):
 	return request_headers
 
 def index(request):
+	item_list = []
+
+	f = open('item_list.txt', r'r')
+	for line in f.readlines:
+		if len(line.strip(' ')) != 0:
+			item = '<a class="memu_list" href="' + itme + '.html" >' + item + '</a>'
+			item_list.append(item)
+		else:
+			pass
+	rander(request, 'menu.html', {'item_list': item_list})
 	return render(request, 'base.html')
 
 def menu(request):
@@ -29,7 +39,7 @@ def menu(request):
 			item_list.append(item)
 		else:
 			pass
-			
+
 	return render(request, 'menu.html', {'item_list': item_list})
 
 @csrf_exempt #禁用CSRF机制
