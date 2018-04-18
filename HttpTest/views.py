@@ -28,7 +28,8 @@ def index(request):
 	return render(request, 'base.html', {'item_list': item_list})
 
 def urlTest(request):
-	return render(request, 'URL.html', {'title': 'URL test'} )
+	title = 'URL Test'
+	return render(request, 'URL.html', {'title': title} )
 
 @csrf_exempt #禁用CSRF机制
 def postTest(request):
