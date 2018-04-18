@@ -27,18 +27,8 @@ def index(request):
 			pass
 	return render(request, 'base.html', {'item_list': item_list})
 
-def menu(request):
-	item_list = []
-
-	f = open('HttpTest/static/menu/item_list.txt', r'r')
-	for line in f.readlines:
-		if len(line.strip(' ')) != 0:
-			item = '<a class="memu_list" href="' + itme + '.html" >' + item + '</a>'
-			item_list.append(item)
-		else:
-			pass
-
-	return render(request, 'menu.html', {'item_list': item_list})
+def urlTest(request):
+	return render(request, '200 OK')
 
 @csrf_exempt #禁用CSRF机制
 def postTest(request):

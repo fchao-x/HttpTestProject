@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<title>{% block title %}Proxy Test{% endblock %}</title>
 	<script>
 		function URLAsterisk()
 		{
@@ -135,7 +136,7 @@
 		{% endfor %}
 	</div>
 	<div id="test_items">
-		<h1 class="top">{% block title %}Test Items{% endblock %}</h1>
+		<h1 class="top">{% block test_item_title %}Test Items{% endblock %}</h1>
 		<form id = "asterisk">
 			星号URI: <button type="button" onclick="URLAsterisk()">发送请求</button>
 		</form>
