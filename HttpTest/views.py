@@ -16,16 +16,21 @@ def getAllHeaders(request):
 			request_headers[header] = request.META[header]
 	return request_headers
 
-def index(request):
+def getMenu(item_list_file_name):
 	item_list = []
-
-	f = open('HttpTest/static/menu/item_list.txt', r'r')
+	f = open(item_list_file_name, r'r')
 	for line in f.readlines():
 		if len(line.strip()) != 0:
 			item_list.append(line.strip())
 		else:
 			pass
-	return render(request, 'base.html', {'item_list': item_list})
+	return item_list
+
+def index(request):
+
+	context = {}
+	context['item_list'] = getMenu('HttpTest/static/menu/item_list.txt')
+	return render(request, 'base.html', context)
 
 def urlTest(request):
 	title = 'URL Test'
