@@ -1,2 +1,4 @@
 URL
 Method
+Host
+Cookie

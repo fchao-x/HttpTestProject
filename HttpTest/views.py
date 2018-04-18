@@ -29,7 +29,8 @@ def menu(request):
 			item_list.append(item)
 		else:
 			pass
-	return render(request, 'menu.html', item_list)
+			
+	return render(request, 'menu.html', {'item_list': item_list})
 
 @csrf_exempt #禁用CSRF机制
 def postTest(request):
