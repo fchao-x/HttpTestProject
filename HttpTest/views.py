@@ -26,8 +26,7 @@ def index(request):
 			item_list.append(item)
 		else:
 			pass
-	render(request, 'menu.html', {'item_list': item_list})
-	return render(request, 'base.html')
+	return render(request, 'base.html', {'item_list': item_list})
 
 def menu(request):
 	item_list = []
