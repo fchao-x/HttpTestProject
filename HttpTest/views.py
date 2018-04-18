@@ -21,8 +21,8 @@ def index(request):
 
 	f = open('HttpTest/static/menu/item_list.txt', r'r')
 	for line in f.readlines():
-		if len(line.strip(' ')) != 0:
-			item_list.append(line.strip(' '))
+		if len(line.strip()) != 0:
+			item_list.append(line.strip())
 		else:
 			pass
 	return render(request, 'base.html', {'item_list': item_list})
