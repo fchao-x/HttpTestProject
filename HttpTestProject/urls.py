@@ -22,5 +22,5 @@ urlpatterns = [
 
     path('', HttpTest_views.index, name='index'),
     path('postTest', HttpTest_views.postTest, name='postTest'),
-    path('URL', HttpTest_views.urlTest, name='urlTest'),
+    path('URL.html', HttpTest_views.urlTest, name='urlTest'),
 ]
