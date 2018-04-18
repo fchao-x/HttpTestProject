@@ -19,7 +19,7 @@ def getAllHeaders(request):
 def index(request):
 	item_list = []
 
-	f = open('item_list.txt', r'r')
+	f = open('static/menu/item_list.txt', r'r')
 	for line in f.readlines:
 		if len(line.strip(' ')) != 0:
 			item = '<a class="memu_list" href="' + itme + '.html" >' + item + '</a>'
