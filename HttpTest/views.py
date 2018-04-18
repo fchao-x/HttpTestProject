@@ -33,8 +33,11 @@ def index(request):
 	return render(request, 'base.html', context)
 
 def urlTest(request):
-	title = 'URL Test'
-	return render(request, 'URL.html', {'title': title} )
+
+	context = {}
+	context['item_list'] = getMenu('HttpTest/static/menu/item_list.txt')
+	context['title'] = 'URL Test'
+	return render(request, 'URL.html', context )
 
 @csrf_exempt #禁用CSRF机制
 def postTest(request):
