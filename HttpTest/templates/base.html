@@ -3,31 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}Proxy Test{% endblock %}</title>
-	<script>
-		function URLAsterisk()
-		{
-			var xmlhttp;
-			if (window.XMLHttpRequest)
-			{
-				//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-				xmlhttp=new XMLHttpRequest();
-			}
-			else
-			{
-				// IE6, IE5 浏览器执行代码
-				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange=function()
-			{
-				if (xmlhttp.readyState==4 && xmlhttp.status==200)
-				{
-					document.getElementById("asterisk").innerHTML=xmlhttp.responseText;
-				}
-			}
-			xmlhttp.open("POST","postTest",true);
-			xmlhttp.send();
-		}
-	</script>
 	<style>
 		* {
 			margin:0;
@@ -136,10 +111,10 @@
 		{% endfor %}
 	</div>
 	<div id="test_items">
-		<h1 class="top">{% block test_items_title %}Test Items{% endblock %}</h1>
-		<form id = "asterisk">
-			星号URI: <button type="button" onclick="URLAsterisk()">发送请求</button>
-		</form>
+		<h1 class="top">{% block test_items_title %}Introduce{% endblock %}</h1>
+		{% block test_items_context %}
+		<p>For Proxy Testing</p>
+		{% endblock %}
 	</div>
 	<div id="request_client">
 		<h1 class="top">Request Sent by Client</h1>
