@@ -22,8 +22,7 @@ def index(request):
 	f = open('HttpTest/static/menu/item_list.txt', r'r')
 	for line in f.readlines():
 		if len(line.strip(' ')) != 0:
-			item = '<a class="memu_list" href="' + line + '.html" >' + line + '</a>'
-			item_list.append(item)
+			item_list.append(line.strip(' '))
 		else:
 			pass
 	return render(request, 'base.html', {'item_list': item_list})
