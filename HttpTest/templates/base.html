@@ -135,7 +135,7 @@
 		{% endfor %}
 	</div>
 	<div id="test_items">
-		<h1 class="top">Test Items</h1>
+		<h1 class="top">{% block title %}Test Items{% endblock %}</h1>
 		<form id = "asterisk">
 			星号URI: <button type="button" onclick="URLAsterisk()">发送请求</button>
 		</form>
