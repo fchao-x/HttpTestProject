@@ -18,7 +18,7 @@ def getAllHeaders(request):
 
 def getMenu(item_list_file_name):
 	item_list = []
-	f = open(item_list_file_name, r'r')
+	f = open(item_list_file_name, 'r')
 	for line in f.readlines():
 		if len(line.strip()) != 0:
 			item_list.append(line.strip())
