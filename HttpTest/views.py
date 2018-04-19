@@ -30,16 +30,16 @@ def get_menu(item_list_file_name):
 
 
 def index(request):
-    context = {'item_list': getMenu('HttpTest/static/menu/item_list.txt')}
+    context = {'item_list': get_menu('HttpTest/static/menu/item_list.txt')}
     return render(request, 'base.html', context)
 
 
 def url_test(request):
-    context = {'item_list': getMenu('HttpTest/static/menu/item_list.txt'), 'title': 'URL Test'}
+    context = {'item_list': get_menu('HttpTest/static/menu/item_list.txt'), 'title': 'URL Test'}
     return render(request, 'URL.html', context)
 
 
 @csrf_exempt  # 禁用CSRF机制
 def post_test(request):
-    request_headers = getAllHeaders(request)
+    request_headers = get_all_headers(request)
     return HttpResponse("<pre>%s</pre>" % request_headers)

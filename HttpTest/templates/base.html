@@ -17,15 +17,16 @@
 		}
 
 		.top {
+			background-color: green;
 			font-size: 25px;
 		}
 
-		#menu {
+		#request_settings {
 			position: absolute;
 			left: 0%;
 			top: 0%;
 
-			width: 15%;
+			width: 20%;
 			height: 100%;
 
 			background-color: lightgrey;
@@ -34,12 +35,12 @@
 			
 
 		}
-		#test_items {
+		#request_items {
 			position: absolute;
-			left: 15%;
+			left: 20%;
 			top: 0%;
 
-			width: 25%;
+			width: 40%;
 			height: 100%;
 
 			background-color: white;
@@ -49,11 +50,11 @@
 		}
 		#request_client {
 			position: absolute;
-			left: 40%;
+			left: 60%;
 			top: 0%;
 
-			width: 30%;
-			height: 50%;
+			width: 40%;
+			height: 100%;
 
 			background-color: lightgrey;
 
@@ -61,7 +62,7 @@
 			
 		}
 
-		
+		/*
 		#request_server {
 			position: absolute;
 			left: 40%;
@@ -81,7 +82,7 @@
 			top: 50%;
 			
 			width: 30%;
-			height: 50%;
+			height: 100%;
 
 			background-color: white;
 
@@ -95,23 +96,31 @@
 			top: 0%;
 
 			width: 30%;
-			height: 50%;
+			height: 100%;
 
-			background-color: lightgrey;
+			background-color: white;
 
 			padding: 5px;
 			
 		}
+		*/
+
 	</style>
 </head>
 <body>
-	<div id="menu">
-		<h1 class="top">Menu</h1>
+	<div id="request_settings">
+		<h1 class="top">Request Settings</h1>
+
+		<h2>Request Line</h2>
+		<form id="method">
+			Method: <input type="text">
+			
+		</form>
 		{% for it in item_list %}
 			<a href="{{ it }}.html" class="menu_item_list">{{ it }}</a><br />
 		{% endfor %}
 	</div>
-	<div id="test_items">
+	<div id="request_items">
 		<h1 class="top">{% block test_items_title %}Introduce{% endblock %}</h1>
 		{% block test_items_context %}
 		<p>For Proxy Testing</p>
@@ -119,16 +128,16 @@
 	</div>
 	<div id="request_client">
 		<h1 class="top">Request Sent by Client</h1>
-	<!---
 	</div>
+	<!---
 	<div id="request_server">
 		<h1 class="top">Request Recieved by Server</h1>
 	</div>
-	-->
+
 	<div id="response_client">
 		<h1 class="top">Response Recieved by Client</h1>
 	</div>
-	<!---
+
 	<div id="response_server">
 		<h1 class="top">Response Sent by Server</h1>
 	</div>
