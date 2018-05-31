@@ -15,7 +15,7 @@ def get_all_headers(request):
     for header in request.META:
         if re_http.match(header) or re_content_type.match(header) or re_content_length.match(header):
             request_headers[header] = request.META[header]
-    return request
+    return request.META
 
 
 def get_menu(item_list_file_name):
