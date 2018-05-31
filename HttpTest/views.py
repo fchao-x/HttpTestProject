@@ -45,4 +45,4 @@ def url_test(request):
 @csrf_exempt  # 禁用CSRF机制
 def post_test(request):
     request_headers = headers(request)
-    return HttpResponse("<pre>%s</pre>" % request_headers.get_all_headers())
+    return HttpResponse("<pre>%s</pre>" % request_headers.get_request_headers())
