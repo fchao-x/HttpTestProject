@@ -1,0 +1,4 @@
+URL
+Method
+Host
+Cookie
