@@ -3,9 +3,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-import re
+from request_headers import headers
 
-
+'''
 def get_all_headers(request):
     re_http = re.compile(r'^HTTP_.+$')
     re_content_type = re.compile(r'^CONTENT_TYPE$')
@@ -16,6 +16,8 @@ def get_all_headers(request):
         if re_http.match(header) or re_content_type.match(header) or re_content_length.match(header):
             request_headers[header] = request.META[header]
     return request.META
+'''
+
 
 
 def get_menu(item_list_file_name):
@@ -41,5 +43,5 @@ def url_test(request):
 
 @csrf_exempt  # 禁用CSRF机制
 def post_test(request):
-    request_headers = get_all_headers(request)
-    return HttpResponse("<pre>%s</pre>" % request_headers)
+    request_headers = headers(request)
+    return HttpResponse("<pre>%s</pre>" % request_headers.get_all_headers())
