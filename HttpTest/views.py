@@ -3,21 +3,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from request_headers import headers
+import re
 
-'''
-def get_all_headers(request):
-    re_http = re.compile(r'^HTTP_.+$')
-    re_content_type = re.compile(r'^CONTENT_TYPE$')
-    re_content_length = re.compile(r'^CONTENT_LENGTH$')
+class headers:
+    """docstring for headers"""
+    def __init__(self, request):
+        self.request = request
 
-    request_headers = {}
-    for header in request.META:
-        if re_http.match(header) or re_content_type.match(header) or re_content_length.match(header):
-            request_headers[header] = request.META[header]
-    return request.META
-'''
+    def get_request_headers(self):
+        re_server = re.compile(r'^SERVER_[PROTOCOL|PORT]$')
+        re_others = re.compile(r'^[PATH|QUERY|REQUEST|HTTP|CONTENT|REMOTE]_.+$')
 
+        request_headers = {}
+        for header in self.request.META:
+            if re_server.match(header) or re_others.match(header):
+                request_headers[header] = self.request.META[header]
+        return request_headers
 
 
 def get_menu(item_list_file_name):
