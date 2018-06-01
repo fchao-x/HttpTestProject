@@ -11,8 +11,8 @@ class headers:
         self.request = request
 
     def get_request_headers(self):
-        re_server = re.compile(r'^SERVER_[PROTOCOL|PORT]$')
-        re_others = re.compile(r'^[PATH|QUERY|REQUEST|HTTP|CONTENT|REMOTE]_.+$')
+        re_server = re.compile(r'^SERVER_((PROTOCOL)|(PORT))$')
+        re_others = re.compile(r'^((PATH)|(QUERY)|(REQUEST)|(HTTP)|(CONTENT)|(REMOTE))_.+$')
 
         request_headers = {}
         for header in self.request.META:
