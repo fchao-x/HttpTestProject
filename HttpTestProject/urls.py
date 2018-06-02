@@ -20,7 +20,7 @@ from HttpTest import views as HttpTest_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    re_path(r'^index.html$', HttpTest_views.index, name='index'),
+    re_path(r'^$', HttpTest_views.index, name='index'),
     path('postTest', HttpTest_views.post_test, name='post_test'),
     re_path(r'^URL.html$', HttpTest_views.url_test, name='url_test'),
 ]

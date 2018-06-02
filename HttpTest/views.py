@@ -6,34 +6,43 @@ from django.views.decorators.csrf import csrf_exempt
 import re
 
 class headers:
-    """docstring for headers"""
+    """Functions:
+        get_request_info()   返回请求"""
+
     def __init__(self, request):
         self.request = request
 
-    def get_request_headers(self):
-        re_server = re.compile(r'^SERVER_[PROTOCOL|PORT]$')
-        re_others = re.compile(r'^[PATH|QUERY|REQUEST|HTTP|CONTENT|REMOTE]_.+$')
+    def get_request_info(self):
+        re_server = re.compile(r'^SERVER_((PROTOCOL)|(PORT))')
+        re_others = re.compile(r'^((PATH)|(QUERY)|(REQUEST)|(HTTP)|(CONTENT)|(REMOTE))_.+$')
 
         request_headers = {}
         for header in self.request.META:
             if re_server.match(header) or re_others.match(header):
                 request_headers[header] = self.request.META[header]
         return request_headers
+        #return self.request.META
 
 
 def get_menu(item_list_file_name):
-    item_list = []
+
     f = open(item_list_file_name, 'r')
+
+    item_list = {}
     for line in f.readlines():
         if len(line.strip()) != 0:
-            item_list.append(line.strip())
-        else:
-            pass
+            items = line.split(',')
+            item_list[items[0].strip()] = []
+            for item in items:
+                if item != items[0]:
+                    item_list[items[0].strip()].append(item.strip())
     return item_list
 
 
 def index(request):
-    context = {'item_list': get_menu('HttpTest/static/menu/item_list.txt')}
+    request_headers = headers(request)
+    context = { 'menu': get_menu('HttpTest/static/menu/item_list.txt'),
+                'request': request_headers.get_request_info() }
     return render(request, 'base.html', context)
 
 
@@ -45,4 +54,6 @@ def url_test(request):
 @csrf_exempt  # 禁用CSRF机制
 def post_test(request):
     request_headers = headers(request)
-    return HttpResponse("<pre>%s</pre>" % request_headers.get_request_headers())
+    return HttpResponse("<pre>%s</pre>" % request_headers.get_request_info())
+
+    #return HttpResponse("<pre>%s</pre>" % get_menu('HttpTest/static/menu/item_list.txt'))

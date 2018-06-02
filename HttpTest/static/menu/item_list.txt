@@ -1,4 +1,2 @@
-URL
-Method
-Host
-Cookie
+Request_URL, Path
+Request_Method, GET, HEAD, TRACE, OPTIONS, POST, PUT, DELET, PATCH
