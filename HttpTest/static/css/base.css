@@ -1,0 +1,111 @@
+* {
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+/*
+
+body {
+	font-family: Arial, '微软雅黑';
+	font-size: 20px;
+}
+
+
+
+.top {
+	background-color: green;
+	font-size: 25px;
+}
+*/
+
+#menu {
+	position: absolute;
+	left: 0%;
+	top: 0%;
+
+	width: 20%;
+	height: 100%;
+
+	/*
+
+	background-color: lightgrey;
+	
+	*/
+
+	padding: 30px;
+
+	
+
+}
+#request_items {
+	position: absolute;
+	left: 20%;
+	top: 0%;
+
+	width: 40%;
+	height: 100%;
+
+	background-color: white;
+
+	padding: 30px;
+	
+}
+#request_client {
+	position: absolute;
+	left: 60%;
+	top: 0%;
+
+	width: 40%;
+	height: 100%;
+
+	/*
+	background-color: lightgrey;
+	*/
+
+	padding: 30px;
+	
+}
+
+/*
+#request_server {
+	position: absolute;
+	left: 40%;
+	top: 50%;
+
+	width: 30%;
+	height: 50%;
+
+	background-color: white;
+
+	padding: 5px;
+
+}
+#response_server {
+	position: absolute;
+	left: 70%;
+	top: 50%;
+	
+	width: 30%;
+	height: 100%;
+
+	background-color: white;
+
+	padding: 5px;
+	
+}
+
+#response_client {
+	position: absolute;
+	left: 70%;
+	top: 0%;
+
+	width: 30%;
+	height: 100%;
+
+	background-color: white;
+
+	padding: 5px;
+	
+}
+*/

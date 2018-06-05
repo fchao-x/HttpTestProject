@@ -12,13 +12,8 @@ class headers:
     def __init__(self, request):
         self.request = request
 
-<<<<<<< HEAD
     def get_request_info(self):
         re_server = re.compile(r'^SERVER_((PROTOCOL)|(PORT))')
-=======
-    def get_request_headers(self):
-        re_server = re.compile(r'^SERVER_((PROTOCOL)|(PORT))$')
->>>>>>> 698ebe9d7b21285a6953a970808b7a0bdb3623bf
         re_others = re.compile(r'^((PATH)|(QUERY)|(REQUEST)|(HTTP)|(CONTENT)|(REMOTE))_.+$')
 
         request_headers = {}

@@ -3,121 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}Proxy Test{% endblock %}</title>
-	<script src = "/jQuery/jquery-3.3.1.min.js"></script>
-	<style>
-		* {
-			margin:0;
-			padding:0;
-			border:0;
-		}
-
-		/*
-
-		body {
-			font-family: Arial, '微软雅黑';
-			font-size: 20px;
-		}
-
-		
-
-		.top {
-			background-color: green;
-			font-size: 25px;
-		}
-		*/
-
-		#menu {
-			position: absolute;
-			left: 0%;
-			top: 0%;
-
-			width: 20%;
-			height: 100%;
-
-			/*
-
-			background-color: lightgrey;
-			
-			*/
-
-			padding: 30px;
-
-			
-
-		}
-		#request_items {
-			position: absolute;
-			left: 20%;
-			top: 0%;
-
-			width: 40%;
-			height: 100%;
-
-			background-color: white;
-
-			padding: 30px;
-			
-		}
-		#request_client {
-			position: absolute;
-			left: 60%;
-			top: 0%;
-
-			width: 40%;
-			height: 100%;
-
-			/*
-			background-color: lightgrey;
-			*/
-
-			padding: 30px;
-			
-		}
-
-		/*
-		#request_server {
-			position: absolute;
-			left: 40%;
-			top: 50%;
-
-			width: 30%;
-			height: 50%;
-
-			background-color: white;
-
-			padding: 5px;
-		
-		}
-		#response_server {
-			position: absolute;
-			left: 70%;
-			top: 50%;
-			
-			width: 30%;
-			height: 100%;
-
-			background-color: white;
-
-			padding: 5px;
-			
-		}
-
-		#response_client {
-			position: absolute;
-			left: 70%;
-			top: 0%;
-
-			width: 30%;
-			height: 100%;
-
-			background-color: white;
-
-			padding: 5px;
-			
-		}
-		*/
-
-	</style>
+	<script src = "/static/jQuery/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
 </head>
 <body>
 
@@ -141,7 +28,7 @@
 		<h1 class="top">{% block test_items_title %}Introduce{% endblock %}</h1>
 		{% block test_items_context %}
 		<p>本 Web Application 用于 HTTP Proxy 测试。</p><br>
-		
+
 		<p>已实现部分</p>
 		<p>	返回服务器收到的 HTTP 请求</p><br>
 
@@ -149,6 +36,21 @@
 		<p>	HTTP POST 请求</p><br>
 
 		<p>HTTP 相关 RFC</p>
+		<p>1. Message Syntax and Routing <a href=https://tools.ietf.org/html/rfc7230>[RFC7231]</a></p>
+		<p>2. Semantics and Content <a href=https://tools.ietf.org/html/rfc7231>[RFC7231]</a></p>
+		<p>3. Conditional Requests <a href=https://tools.ietf.org/html/rfc7232>[RFC7232]</a></p>
+		<p>4. Range Requests <a href=https://tools.ietf.org/html/rfc7233>[RFC7233]</a></p>
+		<p>5. Caching <a href=https://tools.ietf.org/html/rfc7234>[RFC7234]</a></p>
+		<p>6. Authentication <a href=https://tools.ietf.org/html/rfc7235>[RFC7235]</a></p>
+		<p>7. Hypertext Transfer Protocol Version 2 (HTTP/2) <a href=https://tools.ietf.org/html/rfc7540>[RFC7540]</a></p><br>
+
+		<p>废弃的 HTTP RFC</p>
+		<p>1. Hypertext Transfer Protocol -- HTTP/1.1 <a href=https://tools.ietf.org/html/rfc2616>[RFC2616]</a></p>
+		<p>2. Use and Interpretation of HTTP Version Numbers <a href=https://tools.ietf.org/html/rfc2145>[RFC2145]</a></p>
+		<p>3. Upgrading to TLS Within HTTP/1.1 <a href=https://tools.ietf.org/html/rfc2817>[RFC2817]</a></p>
+		<p>4. HTTP Over TLS <a href=https://tools.ietf.org/html/rfc2818>[RFC2818]</a></p>
+		<p>5. Hypertext Transfer Protocol -- HTTP/1.0 <a href=https://tools.ietf.org/html/rfc1945>[RFC1945]</a></p>
+
 
 		{% endblock %}
 
