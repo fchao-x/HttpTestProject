@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     re_path(r'^$', HttpTest_views.index, name='index'),
-    path('postTest', HttpTest_views.post_test, name='post_test'),
+    path('POST.html', HttpTest_views.post_test, name='post_test'),
+
     re_path(r'^URL.html$', HttpTest_views.url_test, name='url_test'),
+    path('test.html', HttpTest_views.test, name='test'),
 ]

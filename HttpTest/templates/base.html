@@ -2,9 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{% block title %}Proxy Test{% endblock %}</title>
-	<script src = "/static/jQuery/jquery-3.3.1.min.js"></script>
+	<title>{{ title }}</title>
+	<script tyoe="text/javascript" src = "/static/jQuery/jquery-3.3.1.min.js"></script>
+	{% block js %}{% endblock %}
 	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+	{% block css %}{% endblock %}
 </head>
 <body>
 
@@ -25,7 +27,7 @@
 
 	<div id="request_items">
 
-		<h1 class="top">{% block test_items_title %}Introduce{% endblock %}</h1>
+		<h1 class="top">{{ middle_title }}</h1>
 		{% block test_items_context %}
 		<p>本 Web Application 用于 HTTP Proxy 测试。</p><br>
 
@@ -56,7 +58,7 @@
 
 	</div>
 
-	<div id="request_client">
+	<div id="request_info">
 
 		<h1 class="top">Request Info</h1>
 

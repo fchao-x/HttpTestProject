@@ -42,6 +42,8 @@ def get_menu(item_list_file_name):
 def index(request):
     request_headers = headers(request)
     context = { 'menu': get_menu('HttpTest/static/menu/item_list.txt'),
+                'title': 'HTTP Test Web',
+                'middle_title': 'Introduction',
                 'request': request_headers.get_request_info() }
     return render(request, 'base.html', context)
 
@@ -53,6 +55,15 @@ def url_test(request):
 
 @csrf_exempt  # 禁用CSRF机制
 def post_test(request):
+    request_headers = headers(request)
+    context = { 'menu': get_menu('HttpTest/static/menu/item_list.txt'), 
+                'title': 'POST Test',
+                'middle_title': 'POST Test',
+                'request': request_headers.get_request_info() }
+    return render(request, 'POST.html', context)
+
+@csrf_exempt  # 禁用CSRF机制
+def test(request):
     request_headers = headers(request)
     return HttpResponse("<pre>%s</pre>" % request_headers.get_request_info())
 

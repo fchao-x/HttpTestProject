@@ -1,6 +1,6 @@
-{% extends base.html %}
-
-{% block test_items_title %}HTTP POST Test{% endblock %}
+{% extends 'base.html' %}
+{% block js %}<script type="text/javascript" src="/static/js/post.js"></script>{% endblock %}
+{% block css %}{% endblock %}
 
 {% block test_items_context %}
 	<p>发送 POST 请求</p><br>
@@ -9,8 +9,44 @@
 	<p>返回服务器收到的 HTTP 请求</p><br>
 
 	<p>下一步实现</p>
-	<p>	HTTP POST 请求</p><br>
+	<p>HTTP POST 请求</p><br>
 
-	<p>HTTP 相关 RFC</p>
+	<p>计划实现</p>
+	<p>POST 参数</p>
+	<p>创建新文件, content-type, 给出示例</p>
+	<p>上传多个文件</p><br>
+
+	<div>
+		<form onchange="content_type($('#content_type_selector').val())">
+			<div>
+				<label>Content-type: </label>
+				<select id="content_type_selector">
+					<option value="application/x-www-form-urlencoded" selected="selected">application/x-www-form-urlencoded</option>
+					<option value="application/json">application/json</option>
+				</select>
+			</div>
+		</form>
+
+		<div>
+			<br>
+			<label id="content_type">请求主体设置: </label>
+			<div id="body_config">
+				<button type="button" onclick="add_random_parameter();">添加随机参数</button>
+				<button type="button" onclick="add_specified_parameter();">添加指定参数</button>
+			</div>
+			<div>
+				<button type="button" onclick="get_paras();">生成参数</button>
+			</div>
+
+		</div>
+	
+		
+
+	</div>
+	<div>
+		<br>
+		<label id="request_content">请求示例: </label>
+	</div>
+
 
 {% endblock %}
