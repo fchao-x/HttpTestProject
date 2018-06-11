@@ -16,7 +16,7 @@ var n=0;
 function add_random_parameter(){
 
 	n++;
-	var html_random_parameter = '<div id="para_' + n + '" func="add_random_parameter">参数个数: <input type="number" name="para_no_' + n + '" />Name长度: <input type="number" name="para_name_' + n + '" />Value长度: <input type="number" name="para_value_' + n + '" /><button type="button" onclick="delete_this_line(' + n + ');">删除</button></div>';
+	var html_random_parameter = '<div id="para_' + n + '" func="add_random_parameter">Name长度: <input type="number" id="para_name_' + n + '" name="para_name_' + n + '" />Value长度: <input type="number" id="para_value_' + n + '" name="para_value_' + n + '" />参数个数: <input type="number" id="para_no_' + n + '" name="para_no_' + n + '" /><button type="button" onclick="delete_this_line(' + n + ');">删除</button></div>';
 	$("#body_config").append(html_random_parameter);	
 
 };
@@ -25,7 +25,7 @@ function add_random_parameter(){
 function add_specified_parameter(){
 
 	n++;
-	var html_specified_parameter = '<div id="para_' + n + '" func="add_specified_parameter">Name值: <input type="text" name="para_name_' + n + '" />Value值: <input type="text" name="para_value_' + n + '" /><button type="button" onclick="delete_this_line(' + n + ');">删除</button></div>';
+	var html_specified_parameter = '<div id="para_' + n + '" func="add_specified_parameter">Name值: <input type="text" id="para_name_' + n + '" name="para_name_' + n + '" />Value值: <input type="text" id="para_value_' + n + '" name="para_value_' + n + '" /><button type="button" onclick="delete_this_line(' + n + ');">删除</button></div>';
 	$("#body_config").append(html_specified_parameter);
 	
 }
@@ -41,37 +41,54 @@ function delete_this_line(x){
 function get_paras(){
 
 	var paras = '';
+	var div_len = $("#body_config").contents("div").length;
 
-	//n==0, 没有添加任何参数
-	if(n==0){
+	//div为0, 没有添加任何参数
+	if(div_len==0){
 		paras = '';
-	} else {
-		for(var i=1; i<=n; i++){
-			if(i == 1){
-				paras = paras + get_para_sub(i);
+	} else {	
+		for(var i=0; i<div_len; i++){
+			var n = $("#body_config").contents("div").eq(i).attr("id").substr(5)
+			if(i==0){
+				paras += get_para_sub(n);
 			} else {
-				paras = '&' + get_para_sub(i);
+				paras += '&' + get_para_sub(n);
 			};			
 		};
 	};
 
-	var html_request_content = '<div><p>' + paras + '</p></div>'
-	$("#request_content").after(html_request_content)
+	var html_request_content = '<div id="request_content_para"><p>' + paras + '</p></div>';
+	$('#request_content_para').remove();
+	$("#request_content").after(html_request_content);
 
 };
 
 //生成参数
-function get_para_sub(n){
+function get_para_sub(x){
 
 	var para = '';
-	if($("#para_" + n).attr("func") == "add_random_parameter"){
-		para = para + get_random_string($("#para_name_" + n).val()) + '=';
-		para = para + get_random_string($("#para_value_" + n).val());
+	var func = $("#para_" + x).attr("func");
+	var para_name = $("#para_name_" + x).val();
+	var para_value = $("#para_value_" + x).val();
+
+	if(func == "add_random_parameter"){
+		var para_no = Number($("#para_no_" + x).val());
+		for(var i=0; i<para_no; i++){
+			if(i==0){
+				para += get_random_string(para_name) + '=';
+				para += get_random_string(para_value);
+			} else {
+				para += '&' + get_random_string(para_name) + '=';
+				para += get_random_string(para_value);
+			};		
+		};
 	} else {
-		para = para + $("#para_name_" + n).val() + '=';
-		para = para + $("#para_value_" + n).val();
-	}
-}
+		para += para_name + '=';
+		para += para_value;
+	};
+	
+	return para;
+};
 
 //生成随机字符串
 function get_random_string(len){
@@ -80,10 +97,10 @@ function get_random_string(len){
 	var chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 	var max_pos = chars.length;
 
-	for(i=0; i<len; i++){
+	for(var i=0; i<len; i++){
 		random_string += chars.charAt(Math.floor(Math.random() * max_pos));
 	};
-
+	
 	return random_string;
 
 };
